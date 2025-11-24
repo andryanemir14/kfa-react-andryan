@@ -1,0 +1,25 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
+:root{
+  --primaryAccent: #003A77;
+  --secondaryAccent: #F29100;
+  --ternearyAccent: #476c93;
+}
+
+.btnPrimaryAccent {
+  background-color: var(--primaryAccent);
+  color: white;
+  border-radius: 25px;
+  padding: 10px 20px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+section {
+  margin-top: 20px;
+}
