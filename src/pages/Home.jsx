@@ -25,7 +25,7 @@ function Home() {
 <div className="card">
   <img src="..." className="card-img-top" alt="..."/>
   <div className="card-body">
-    <h5 className="card-title">Kimia Farma</h5>
+    <h5 className="card-title">Kimia Farma 1</h5>
     <p className="card-text">Kimia Farma Apotek dan Kementerian UMKM Fasilitasi UMKM untuk Masuk Rantai Pasok BUMN</p>
     <a href="#" className="btn btn-primary">Selengkapnya</a>
   </div>
@@ -36,7 +36,7 @@ function Home() {
 <div className="card">
   <img src="..." className="card-img-top" alt="..."/>  
    <div className="card-body">
-      <h5 className="card-title">Kimia Farma</h5>
+      <h5 className="card-title">Kimia Farma 2</h5>
       <p className="card-text">Kimia Farma Apotek Gelar RUPST 2024: Sukses Lewati Multi Krisis dan Perkuat Transformasi Digital</p>
       <a href="#" className="btn btn-primary">Selengkapnya</a>
    </div> 
@@ -47,7 +47,7 @@ function Home() {
 <div className="card">
   <img src="..." className="card-img-top" alt="..."/>  
    <div className="card-body">
-      <h5 className="card-title">Kimia Farma</h5>
+      <h5 className="card-title">Kimia Farma 3</h5>
       <p className="card-text">KFA Paparkan Strategi Transformasi dan Inisiatif Pertumbuhan di Forum Investor Verdhana Up-Close</p>
       <a href="#" className="btn btn-primary">Selengkapnya</a>
    </div> 
