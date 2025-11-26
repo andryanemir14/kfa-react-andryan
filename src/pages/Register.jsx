@@ -2,70 +2,72 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
-
 function Register() {
-    const navigate = useNavigate();
-    const { register } = useAuth();
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { register } = useAuth();
 
-    const [formData, setFormData] = useState({
+  //   tambahkan fungsi error validasi
+  const [error, setError] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
     username: "",
+    fullName: "",
     email: "",
     password: "",
-    fullName: "",
     role: "user",
   });
 
-    const handleChange = async (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
-    
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
 
     if (error) {
-        setError('');
-        }
-    };
-    
+      setError("");
+    }
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError('');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
 
-        if (
-            !formData.username || 
-            !formData.email ||
-            !formData.password || 
-            !formData.fullName || 
-            !formData.role
-        ) {
-            setError('Please fill in all fields');
-            return;
-        }
-        setLoading(true);
-        try {
-            await register( {
-                username: formData.username,
-                email: formData.email,
-                password: formData.password,
-                fullName: formData.fullName,
-                role: "user",
-                }
-            );
-            navigate('/dashboard');
+    if (
+      !formData.username ||
+      !formData.fullName ||
+      !formData.email ||
+      !formData.role ||
+      !formData.password
+    ) {
+      setError("Please fill in all fields.");
+      return;
+    }
 
-         } catch (error) {
-            setError('Failed to login, please check your email and password')
-        } finally {
-            setLoading(false);
-        }
-        
-        }
-  
+    setLoading(true);
+    try {
+      await register({
+        username: formData.username,
+        fullName: formData.fullName,
+        email: formData.email,
+        password: formData.password,
+        role: formData.role,
+      });
+      navigate("/dashboard");
+    } catch (err) {
+      setError(
+        err.message || "Failed to log in. Please check your credentials."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  return ( 
+  return (
     <>
-  <div className="container d-flex flex-column justify-content-center align-items-center vh-100">
+      <div className="container d-flex flex-column justify-content-center align-items-center vh-100">
         <div className="mb-4 text-center col-md-4">
           <main className="m-auto form-signin w-100">
             <form onSubmit={handleSubmit}>
@@ -84,7 +86,6 @@ function Register() {
                   ></button>
                 </div>
               )}
-
               <div className="form-floating">
                 <input
                   type="text"
@@ -97,7 +98,6 @@ function Register() {
                 />
                 <label htmlFor="usernameInput">Username</label>
               </div>
-
               <div className="form-floating">
                 <input
                   type="text"
@@ -110,7 +110,6 @@ function Register() {
                 />
                 <label htmlFor="fullNameInput">Full Name</label>
               </div>
-
               <div className="form-floating">
                 <input
                   type="email"
@@ -123,7 +122,6 @@ function Register() {
                 />
                 <label htmlFor="floatingInput">Email address</label>
               </div>
-              &nbsp;
               <div className="form-floating">
                 <input
                   type="password"
@@ -136,21 +134,21 @@ function Register() {
                 />
                 <label htmlFor="floatingPassword">Password</label>
               </div>
-             &nbsp;
+              &nbsp;
               <button
                 className="py-2 btn btn-primary w-100"
                 type="submit"
                 disabled={loading}
               >
-                {loading ? 'Register process...' : 'Register '}
+                {loading ? "Register process..." : "Register "}
               </button>
               <p className="mt-5 mb-3 text-body-secondary">&copy; 2017–2025</p>
             </form>
           </main>
         </div>
       </div>
-      </>
-  )
-};
+    </>
+  );
+}
 
 export default Register;

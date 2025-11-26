@@ -1,10 +1,12 @@
-import { Link, Routes, Route } from "react-router-dom";
-import MainLayout from "./layouts/MainLayout.jsx";
-import Home from "./pages/Home.jsx";
-import Login from "./pages/Login.jsx";
-import Register from "./pages/Register.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
-import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import { Routes, Route, Link } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminLayout from "./layouts/AdminLayout";
+import Users from "./components/admin/Users";
 
 function App() {
   return (
@@ -13,17 +15,21 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
         </Route>
-        <Route path="login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
+        {/* admin route protected */}
         <Route
-          path="/dashboard"
+          path="/admin"
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <AdminLayout />
             </ProtectedRoute>
           }
-        />
+        >
+          <Route index element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="users" element={<Users />} />
+        </Route>
       </Routes>
     </>
   );

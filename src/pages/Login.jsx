@@ -43,7 +43,7 @@ function Login() {
         email: formData.email,
         password: formData.password,
       });
-      navigate("/dashboard");
+      navigate("/admin");
     } catch (err) {
       setError(
         err.message || "Failed to log in. Please check your credentials."
@@ -59,7 +59,7 @@ function Login() {
         <div className="mb-4 text-center col-md-4">
           <main className="m-auto form-signin w-100">
             <form onSubmit={handleSubmit}>
-              <h1 className="mb-3 h3 fw-normal">Please sign in</h1>
+              <h1 className="mb-3 h3 fw-normal">Dashboard Panel</h1>
               {error && (
                 <div
                   className="alert alert-danger alert-dismissible fade show"
@@ -74,7 +74,6 @@ function Login() {
                   ></button>
                 </div>
               )}
-
               <div className="form-floating">
                 <input
                   type="email"
@@ -85,6 +84,7 @@ function Login() {
                   value={formData.email}
                   onChange={handleChange}
                 />
+                &nbsp;
                 <label htmlFor="floatingInput">Email address</label>
               </div>
               <div className="form-floating">
@@ -99,17 +99,7 @@ function Login() {
                 />
                 <label htmlFor="floatingPassword">Password</label>
               </div>
-              <div className="my-3 form-check text-start">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value="remember-me"
-                  id="checkDefault"
-                />
-                <label className="form-check-label" htmlFor="checkDefault">
-                  Remember me
-                </label>
-              </div>
+              &nbsp;
               <button
                 className="py-2 btn btn-primary w-100"
                 type="submit"
